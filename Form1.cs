@@ -145,7 +145,7 @@ namespace space_shooter
         }
         int GetEnemySpeed(int baseSpeed)
         {
-            return baseSpeed + (int)(1.5 * Math.Log(score + 1));
+            return baseSpeed + (int)(1.25 * Math.Log(score + 1));
         }
         private void starsTimer_Tick(object sender, EventArgs e)
         {
@@ -237,4 +237,5 @@ namespace space_shooter
 
 
 
-
+ 
+ 
