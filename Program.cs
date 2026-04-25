@@ -14,4 +14,4 @@ namespace space_shooter
             Application.Run(new Form1());
         }
     }
-}
+}            

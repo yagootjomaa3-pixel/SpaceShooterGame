@@ -69,30 +69,32 @@
             // 
             // MoveBgTimer
             // 
+            MoveBgTimer.Enabled = true;
             MoveBgTimer.Interval = 20;
             MoveBgTimer.Tick += MoveBgTimer_Tick_1;
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Image = Properties.Resources.download;
-            pictureBox1.Location = new Point(100, 100);
+            pictureBox1.BackColor = Color.Navy;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(169, 340);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(85, 52);
+            pictureBox1.Size = new Size(100, 63);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // starsTimer
             // 
+            starsTimer.Enabled = true;
             starsTimer.Interval = 20;
             starsTimer.Tick += starsTimer_Tick;
             // 
             // enemy1
             // 
             enemy1.BackColor = Color.Transparent;
-            enemy1.Image = Properties.Resources.download__1_;
-            enemy1.Location = new Point(450, 318);
+            enemy1.Image = (Image)resources.GetObject("enemy1.Image");
+            enemy1.Location = new Point(247, 71);
             enemy1.Name = "enemy1";
             enemy1.Size = new Size(71, 55);
             enemy1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -102,8 +104,8 @@
             // enemy2
             // 
             enemy2.BackColor = Color.Transparent;
-            enemy2.Image = Properties.Resources.download__1_;
-            enemy2.Location = new Point(266, 195);
+            enemy2.Image = (Image)resources.GetObject("enemy2.Image");
+            enemy2.Location = new Point(70, 12);
             enemy2.Name = "enemy2";
             enemy2.Size = new Size(88, 62);
             enemy2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -123,14 +125,17 @@
             // 
             // labelScore
             // 
+            labelScore.Anchor = AnchorStyles.Top;
             labelScore.AutoSize = true;
-            labelScore.Font = new Font("Microsoft Sans Serif", 12F);
-            labelScore.ForeColor = Color.Snow;
-            labelScore.Location = new Point(2, 19);
+            labelScore.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Bold);
+            labelScore.ForeColor = Color.DarkGray;
+            labelScore.ImageAlign = ContentAlignment.TopCenter;
+            labelScore.Location = new Point(231, 18);
             labelScore.Name = "labelScore";
-            labelScore.Size = new Size(86, 25);
+            labelScore.Size = new Size(123, 31);
             labelScore.TabIndex = 4;
             labelScore.Text = "Score: 0";
+            labelScore.Click += labelScore_Click;
             // 
             // Form1
             // 
@@ -138,11 +143,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Navy;
             ClientSize = new Size(582, 453);
+            Controls.Add(pictureBox1);
             Controls.Add(labelScore);
             Controls.Add(pictureBox2);
             Controls.Add(enemy2);
             Controls.Add(enemy1);
-            Controls.Add(pictureBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             KeyPreview = true;
             MaximumSize = new Size(600, 500);
