@@ -222,17 +222,10 @@ namespace space_shooter
           
         }
 
-        private void MoveBgTimer_Tick_1(object sender, EventArgs e)
-        {
 
-        }
-
-        private void labelScore_Click(object sender, EventArgs e)
-        {
 
         }
     }
-} 
 
 
 
