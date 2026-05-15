@@ -1,23 +1,10 @@
-using System.ComponentModel;
-using System.Data;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Media;
-
-
-
-
-
 namespace space_shooter
 {
     public partial class Form1 : Form
-     {
-        int playerSpeed = 10;
-      
+    {
 
 
         PictureBox[] Stars;
@@ -65,14 +52,12 @@ namespace space_shooter
                     Stars[i].BackColor = Color.DarkGray;
                 }
                 this.Controls.Add(Stars[i]);
-               
+
             }
             starsTimer.Start();
-            MoveBgTimer.Start();
 
-        
         }
-       
+
 
         private void leftMoveTimer_Tick(object sender, EventArgs e)
         {
@@ -94,31 +79,31 @@ namespace space_shooter
 
         private void upMoveTimer_Tick(object sender, EventArgs e)
         {
-            pictureBox1.Top -= 5;
+            if (pictureBox1.Bottom > this.Height - 150)
+            {
+                pictureBox1.Top -= 5;
+            }
+
         }
 
 
-
+        private void downMoveTimer_Tick(object sender, EventArgs e)
+        {
+            if (pictureBox1.Top < this.Height - 120)
+            {
+                pictureBox1.Top += 15;
+            }
+        }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left) { leftMoveTimer.Start(); }
             if (e.KeyCode == Keys.Right) { rightMoveTimer.Start(); }
             if (e.KeyCode == Keys.Up) { upMoveTimer.Start(); }
             if (e.KeyCode == Keys.Down) { downMoveTimer.Start(); }
-         
+
 
         }
 
-
-
-
-        private void downMoveTimer_Tick(object sender, EventArgs e)
-        {
-            if (pictureBox1.Top < this.Height - 100)
-            {
-                pictureBox1.Top += 15;
-            }
-        }
         void CreateBullet()
         {
             PictureBox bullet = new PictureBox();
@@ -145,7 +130,7 @@ namespace space_shooter
         }
         int GetEnemySpeed(int baseSpeed)
         {
-            return baseSpeed + (int)(1.25 * Math.Log(score + 1));
+            return baseSpeed + (int)(1.5 * Math.Log(score + 1));
         }
         private void starsTimer_Tick(object sender, EventArgs e)
         {
@@ -158,7 +143,7 @@ namespace space_shooter
                     x.Top -= 50;
                     if (x.Bounds.IntersectsWith(enemy1.Bounds))
                     {
-                        score++; 
+                        score++;
                         labelScore.Text = "Score: " + score;
                         this.Controls.Remove(x);
                         enemy1.Top = -100;
@@ -186,14 +171,14 @@ namespace space_shooter
             enemy1.Top += GetEnemySpeed(2);
             enemy2.Top += GetEnemySpeed(1);
 
-            if (enemy1.Top+100 > this.Height)
+            if (enemy1.Top + 100 > this.Height)
             {
                 starsTimer.Stop();
                 MessageBox.Show("Game Over!😐");
                 Application.Exit();
             }
 
-            if (enemy2.Top+100 > this.Height)
+            if (enemy2.Top + 100 > this.Height)
             {
                 starsTimer.Stop();
                 MessageBox.Show("Game Over!😐");
@@ -205,6 +190,7 @@ namespace space_shooter
                 starsTimer.Stop();
                 MessageBox.Show("Game Over!😐");
                 Application.Exit();
+
             }
             foreach (Control x in this.Controls)
             {
@@ -216,19 +202,11 @@ namespace space_shooter
                     }
                 }
             }
-
-
-
-          
-        }
-
-
-
         }
     }
+}
 
 
 
 
- 
- 
+
